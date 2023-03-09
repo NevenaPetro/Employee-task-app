@@ -33,6 +33,11 @@
   color:#3d3935;
   font-size: 16px;
   margin: 0 25px;
+  height: 100%;
+}
+
+.header-btn:hover {
+  cursor: pointer;
 }
 
 .header-btn-about {
@@ -42,4 +47,8 @@
     font-size: 20px;
     padding: 0 25px;
     font-weight: 700;
+    height: 100%;
+}
+.header-btn-about:hover {
+  cursor: pointer;
 }
