@@ -1,0 +1,10 @@
+@import '../../app.css';
+
+
+
+.blue-dot {
+    background-color: #00a0df;
+    width: 11px;
+    height: 11px;
+}
+

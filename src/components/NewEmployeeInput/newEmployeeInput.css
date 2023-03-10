@@ -1,0 +1,30 @@
+@import '../../app.css';
+
+.create-new-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 60px;
+  background-color: #00a0df;
+}
+.create-new-input input {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+.btn-md {
+  border: none;
+  color: #eaeaea;
+  background-color: #3d3935;
+  border-radius: 20px;
+  font-weight: 700;
+  padding: 0 20px;
+  height: 32px;
+  margin: 0 10px;
+}
+.btn-md:hover {
+  cursor: pointer;
+  background-color: #eaeaea;
+  color: #3d3935;
+  transition: all 0.3s ease;
+}

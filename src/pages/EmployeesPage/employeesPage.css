@@ -1,5 +1,39 @@
-@import "../../app.css";
+@import '../../app.css';
 
-.employees-body {
-    padding: 20px 60px;
+.employees-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 60px;
+  background-color: #eaeaea;
+  position: relative;
+  z-index: 1;
+}
+.btn-big {
+  border: solid 1px #00a0df;
+  color: #00a0df;
+  border-radius: 20px;
+  font-weight: 700;
+  padding: 0 20px;
+  height: 40px;
+}
+.btn-big:hover {
+  cursor: pointer;
+  background-color: #00a0df;
+  color: #eaeaea;
+  transition: all 0.3s ease;
+}
+.input-wrap {
+  position: absolute;
+  top: 183px;
+  width: 100%;
+  z-index: 0;
+  transition: all 0.3s ease-in-out;
+}
+.input-hidden {
+  top: 135px;
+}
+
+.empl-list {
+  margin: 80px 0 20px 120px;
+  width: 70%;
 }
