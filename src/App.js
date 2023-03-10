@@ -14,6 +14,13 @@ import './app.css';
 function App() {
   const [employeesList, setEmployeesList] = useState([]);
   const [tasksList, setTasksList] = useState([]);
+  const [employeeId, setEmployeeId] = useState(0);
+
+  function deleteEmployee(item) {
+      (employeesList.find((e) => e.Id === item.Id).deleted = true)
+      setEmployeesList([...employeesList])
+  }
+  
 
   return (
     <ApplicationProvider
@@ -22,6 +29,10 @@ function App() {
         setEmployeesList,
         tasksList,
         setTasksList,
+        employeeId,
+        setEmployeeId,
+        deleteEmployee,
+        updateEmployee
       }}
     >
       <Header />

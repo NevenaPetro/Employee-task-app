@@ -1,7 +1,11 @@
 import React from 'react';
+import { applicationContext } from '../../context/AplicationContext';
+import { useContext } from 'react';
 import '../EmplListItem/emplListItem.css';
 
 function EmplListItem({ item }) {
+  const { deleteEmployee, updateEmployee } = useContext(applicationContext);
+
   return (
     <>
       <td>
@@ -22,16 +26,22 @@ function EmplListItem({ item }) {
       <td>
         <p>{item.salary}</p>
       </td>
-      
-        <button type="button" className="btn-md">
+      <td>
+        <button
+          type="button"
+          onClick={() => {
+            updateEmployee(item);
+          }}
+          className="btn-md"
+        >
           update
         </button>
-      
-      
+      </td>
+      <td>
         <button type="button" className="btn-md">
           delete
         </button>
-      
+      </td>
     </>
   );
 }

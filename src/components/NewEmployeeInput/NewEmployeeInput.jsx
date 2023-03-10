@@ -8,7 +8,12 @@ function NewEmployeeInput({ activeClassName, setActiveClassName }) {
   const [emplPhone, setEmplPhone] = useState('');
   const [emplBirth, setEmplBirth] = useState('');
   const [emplSalary, setEmplSalary] = useState('');
-  const { employeesList, setEmployeesList } = useContext(applicationContext);
+  const {
+    employeesList,
+    setEmployeesList,
+    employeeId,
+    setEmployeeId,
+  } = useContext(applicationContext);
 
   function handleEmplNameInput(e) {
     setEmplName(e.target.value);
@@ -29,12 +34,15 @@ function NewEmployeeInput({ activeClassName, setActiveClassName }) {
   function createNewEmployye(event) {
     event.preventDefault();
     setActiveClassName(!activeClassName);
+    setEmployeeId(employeeId + 1);
     const newEmployee = {
+      Id: employeeId,
       name: emplName,
       email: emplEmail,
       phone: emplPhone,
       dateOfBirth: emplBirth,
       salary: emplSalary,
+      deleted: false,
     };
     setEmployeesList([...employeesList, newEmployee]);
   }
@@ -42,29 +50,18 @@ function NewEmployeeInput({ activeClassName, setActiveClassName }) {
   return (
     <>
       <form className="create-new-input" onSubmit={createNewEmployye}>
-        <input
-          placeholder="Full Name"
-          
-          onChange={handleEmplNameInput}
-        ></input>
-        <input
-          placeholder="email"
-        
-          onChange={handleEmplEmailInput}
-        ></input>
+        <input placeholder="Full Name" onChange={handleEmplNameInput}></input>
+        <input placeholder="email" onChange={handleEmplEmailInput}></input>
         <input
           placeholder="phone number"
-          
           onChange={handleEmplPhoneInput}
         ></input>
         <input
           placeholder="date of birth"
-          
           onChange={handleEmplBirthInput}
         ></input>
         <input
           placeholder="monthly salary"
-          
           onChange={handleEmplSalaryInput}
         ></input>
         <button type="submit" className="btn-md">

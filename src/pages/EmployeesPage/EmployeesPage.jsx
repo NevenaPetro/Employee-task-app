@@ -12,14 +12,13 @@ function EmployeesPage() {
 
   return (
     <>
-      <div className='employees-header'>
-        <h1 className='title'>Employees</h1>
+      <div className="employees-header">
+        <h1 className="title">Employees</h1>
         <button
-          type='button'
-          className='btn-big'
+          type="button"
+          className="btn-big"
           onClick={() => {
             setActiveClassName(!activeClassName);
-            console.log(employeesList);
           }}
         >
           Create new employee
@@ -31,11 +30,23 @@ function EmployeesPage() {
           setActiveClassName={setActiveClassName}
         />
       </div>
-      <table className='empl-list'>
-        
+      <table className="empl-list">
+        <tbody>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>email</th>
+            <th>Phone</th>
+            <th>Date of birth</th>
+            <th>Monthly salary</th>
+          </tr>
           {employeesList &&
-            employeesList.map((e) => <tr><EmplListItem item={e}></EmplListItem></tr>)}
-        
+            employeesList.map((e) => (
+              <tr>
+                {!e.deleted && <EmplListItem key={e.id} item={e}></EmplListItem>}
+              </tr>
+            ))}
+        </tbody>
       </table>
     </>
   );
