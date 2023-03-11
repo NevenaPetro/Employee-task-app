@@ -1,11 +1,14 @@
 @import '../../app.css';
 
-
+.empl-page{
+  min-height: 100vh;
+}
 .employees-header {
   display: flex;
   justify-content: space-between;
   padding: 30px 60px;
   background-color: #eaeaea;
+  color: #3d3935;
   position: relative;
   z-index: 1;
 }

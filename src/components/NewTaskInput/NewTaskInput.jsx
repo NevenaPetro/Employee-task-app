@@ -1,19 +1,17 @@
 import React, { useState, useContext } from 'react';
 import { applicationContext } from '../../context/AplicationContext';
 import './newTaskInput.css';
+import DatePickerTask from '../DatePickerTask/DatePickerTask';
 
 function NewTaskInput({ activeClassName, setActiveClassName }) {
   const [taskTitle, setTaskTitle] = useState('');
   const [taskDescr, setTaskDescr] = useState('');
-  const [taskAssignee, setTaskAssignee] = useState([]);
-  const [taskDueDate, setTaskDueDate] = useState('');
-  
-  const {
-    tasksList,
-    setTasksList,
-    taskId,
-    setTaskId,
-  } = useContext(applicationContext);
+  const [taskAssignee, setTaskAssignee] = useState(1);
+  const [taskDueDate, setTaskDueDate] = useState(new Date());
+
+  const { tasksList, setTasksList, taskId, setTaskId , employeesList} = useContext(
+    applicationContext
+  );
 
   function handleTaskTitleInput(e) {
     setTaskTitle(e.target.value);
@@ -22,12 +20,8 @@ function NewTaskInput({ activeClassName, setActiveClassName }) {
     setTaskDescr(e.target.value);
   }
   function handleTaskAssigneeInput(e) {
-    setTaskAssignee(e.target.value);
+    setTaskAssignee(+e.target.value);
   }
-  function handleTaskDueDateInput(e) {
-    setTaskDueDate(e.target.value);
-  }
- 
 
   function createNewTask(event) {
     event.preventDefault();
@@ -47,16 +41,41 @@ function NewTaskInput({ activeClassName, setActiveClassName }) {
   return (
     <>
       <form className="create-new-input-task" onSubmit={createNewTask}>
-        <input placeholder="Task Title" onChange={handleTaskTitleInput}></input>
-        <textarea placeholder="Task Description" onChange={handleTaskDescrInput}></textarea>
-        <input
-          placeholder="Task Assignee"
-          onChange={handleTaskAssigneeInput}
-        ></input>
-        <input
-          placeholder="Task Due Date"
-          onChange={handleTaskDueDateInput}
-        ></input>
+        <button
+          type="button"
+          className="close-btn"
+          onClick={() => {
+            setActiveClassName(!activeClassName);
+          }}
+        >
+          X
+        </button>
+        <div className="label-input-task">
+          <label htmlFor="title">Task Title</label>
+          <input
+            name="title"
+            placeholder="enter"
+            onChange={handleTaskTitleInput}
+          ></input>
+        </div>
+        <div className="label-input-task">
+          <p>Task Due Date</p>
+          <DatePickerTask startDate={taskDueDate} setStartDate={setTaskDueDate} />
+        </div>
+        <div className="label-input-task">
+          <label htmlFor="descr">Task Description</label>
+          <textarea
+            name="descr"
+            placeholder="enter"
+            onChange={handleTaskDescrInput}
+          ></textarea>
+        </div>
+        <div className="label-input-task">
+          <label htmlFor="assignee">Choose assignee</label>
+          <select name="assignee" id="cars" onChange={handleTaskAssigneeInput}>
+          {employeesList.map((e)=>{return <option value={e.id}>{e.name}</option>})}
+          </select>
+        </div>
         <button type="submit" className="btn-md">
           Create
         </button>

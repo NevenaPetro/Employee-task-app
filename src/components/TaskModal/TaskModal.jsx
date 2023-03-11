@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 import { applicationContext } from '../../context/AplicationContext';
+import DatePickerTask from '../DatePickerTask/DatePickerTask';
 import '../TaskModal/taskModal.css';
 
 function TaskModal({ item }) {
@@ -9,8 +10,7 @@ function TaskModal({ item }) {
   const [newDescr, setNewDescr] = useState(item.description);
   const [newAssignee, setNewAssignee] = useState(item.assignee);
   const [newDueDate, setNewDueDate] = useState(item.dueDate);
-  
-  
+
   function changeTask(e) {
     e.preventDefault();
     const updatedTask = {
@@ -35,9 +35,7 @@ function TaskModal({ item }) {
   function handleAssigneeInputChange(e) {
     setNewAssignee(e.target.value);
   }
-  function handleDueDateInputChange(e) {
-    setNewDueDate(e.target.value);
-  }
+  
 
   return (
     <>
@@ -68,7 +66,6 @@ function TaskModal({ item }) {
               value={newTitle}
               onChange={handleTitleInputChange}
               className="modal-task-input"
-              
             ></input>
             <textarea
               type="text"
@@ -85,13 +82,10 @@ function TaskModal({ item }) {
               className="modal-task-input"
             ></input>
 
-            <input
-              type="text"
-              placeholder={item.dueDate}
-              value={newDueDate}
-              onChange={handleDueDateInputChange}
-              className="modal-task-input"
-            ></input>
+            <DatePickerTask
+              startDate={newDueDate}
+              setStartDate={setNewDueDate}
+            />
 
             <button className="btn-md" type="submit">
               update

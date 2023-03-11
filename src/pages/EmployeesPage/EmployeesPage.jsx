@@ -6,12 +6,14 @@ import EmplListItem from '../../components/EmplListItem/EmplListItem';
 import '../EmployeesPage/employeesPage.css';
 
 function EmployeesPage() {
-  const [activeClassName, setActiveClassName] = useState(true);
   const inputHidden = 'input-hidden';
-  const { employeesList } = useContext(applicationContext);
+  const { employeesList, activeClassName, setActiveClassName } = useContext(
+    applicationContext
+  );
 
+  console.log(employeesList);
   return (
-    <div className='empl-page'>
+    <div className="empl-page">
       <div className="employees-header">
         <h2 className="title">EMPLOYEES</h2>
         <button
@@ -25,10 +27,7 @@ function EmployeesPage() {
         </button>
       </div>
       <div className={`input-wrap ${activeClassName ? inputHidden : ''}`}>
-        <NewEmployeeInput
-          activeClassName={activeClassName}
-          setActiveClassName={setActiveClassName}
-        />
+        <NewEmployeeInput />
       </div>
       <table className="empl-list">
         <tbody>
@@ -42,10 +41,8 @@ function EmployeesPage() {
           </tr>
           {employeesList &&
             employeesList.map((e) => (
-              <tr>
-                {!e.deleted && (
-                  <EmplListItem key={e.id} item={e}></EmplListItem>
-                )}
+              <tr key={e.id}>
+                <EmplListItem item={e}></EmplListItem>
               </tr>
             ))}
         </tbody>

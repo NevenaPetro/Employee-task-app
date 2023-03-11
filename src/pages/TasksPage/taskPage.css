@@ -2,13 +2,14 @@
 
 .task-page {
     background-color: #fff;
+    width: 100vw;
 }
 
 .tasks-header {
   display: flex;
   justify-content: space-between;
   padding: 30px 60px;
-  color: #00a0df;
+  color: #3d3935;
   background-color: #eaeaea;
   position: relative;
   z-index: 1;
@@ -23,11 +24,11 @@
 }
 .input-wrap-task {
   position: absolute;
-  top: 180px;
+  top: 0;
   right: 0;
-  z-index: 0;
+  z-index: 1;
   transition: all 0.3s ease-in-out;
   }
 .input-hidden-task{
-  right: -263px;
+  right: -282px;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useContext } from 'react';
 import { applicationContext } from '../../context/AplicationContext';
 import '../EmplModal/emplModal.css';
+import DatePickerBirth from '../DatePickerBirth/DatePickerBirth';
 
 function EmplModal({ item }) {
   const { setEmplModalData, updateEmployee } = useContext(applicationContext);
@@ -10,8 +11,7 @@ function EmplModal({ item }) {
   const [newPhone, setNewPhone] = useState(item.phone);
   const [newDateOfBirth, setNewDateOfBirth] = useState(item.dateOfBirth);
   const [newSalary, setNewSalary] = useState(item.salary);
-  
-  
+
   function changeEmployee(e) {
     e.preventDefault();
     const updatedEmployee = {
@@ -20,8 +20,7 @@ function EmplModal({ item }) {
       email: newEmail,
       phone: newPhone,
       dateOfBirth: newDateOfBirth,
-      salary: newSalary,
-      deleted: false,
+      salary: newSalary
     };
     updateEmployee(updatedEmployee);
     setEmplModalData(null);
@@ -36,9 +35,6 @@ function EmplModal({ item }) {
   }
   function handlePhoneInputChange(e) {
     setNewPhone(e.target.value);
-  }
-  function handleDateOfBirthInputChange(e) {
-    setNewDateOfBirth(e.target.value);
   }
   function handleSalaryInputChange(e) {
     setNewSalary(e.target.value);
@@ -73,7 +69,6 @@ function EmplModal({ item }) {
               value={newName}
               onChange={handleNameInputChange}
               className="modal-input"
-              
             ></input>
             <input
               type="text"
@@ -89,15 +84,10 @@ function EmplModal({ item }) {
               onChange={handlePhoneInputChange}
               className="modal-input"
             ></input>
-
-            <input
-              type="text"
-              placeholder={item.dateOfBirth}
-              value={newDateOfBirth}
-              onChange={handleDateOfBirthInputChange}
-              className="modal-input"
-            ></input>
-
+            <DatePickerBirth
+              startDate={newDateOfBirth}
+              setStartDate={setNewDateOfBirth}
+            />
             <input
               type="text"
               placeholder={item.salary}

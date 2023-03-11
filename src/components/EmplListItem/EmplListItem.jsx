@@ -1,6 +1,7 @@
 import React from 'react';
 import { applicationContext } from '../../context/AplicationContext';
-import { useContext } from 'react'
+import { useContext } from 'react';
+import Moment from 'react-moment';
 import '../EmplListItem/emplListItem.css';
 
 
@@ -24,7 +25,7 @@ function EmplListItem({ item }) {
         <p>{item.phone}</p>
       </td>
       <td>
-        <p>{item.dateOfBirth}</p>
+        <p><Moment format="DD/MM/YYYY">{item.dateOfBirth}</Moment></p>
       </td>
       <td>
         <p>{item.salary}</p>
