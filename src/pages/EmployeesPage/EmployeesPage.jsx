@@ -11,7 +11,7 @@ function EmployeesPage() {
   const { employeesList } = useContext(applicationContext);
 
   return (
-    <>
+    <div className='empl-page'>
       <div className="employees-header">
         <h2 className="title">EMPLOYEES</h2>
         <button
@@ -43,12 +43,14 @@ function EmployeesPage() {
           {employeesList &&
             employeesList.map((e) => (
               <tr>
-                {!e.deleted && <EmplListItem key={e.id} item={e}></EmplListItem>}
+                {!e.deleted && (
+                  <EmplListItem key={e.id} item={e}></EmplListItem>
+                )}
               </tr>
             ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

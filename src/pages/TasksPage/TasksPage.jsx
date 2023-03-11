@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import { applicationContext } from '../../context/AplicationContext';
 import NewTaskInput from '../../components/NewTaskInput/NewTaskInput';
 import TaskListItem from '../../components/TaskListItem/TaskListItem';
+import '../TasksPage/taskPage.css';
 
 function TaskPage() {
   const [activeClassName, setActiveClassName] = useState(true);
@@ -10,8 +11,8 @@ function TaskPage() {
   const { tasksList } = useContext(applicationContext);
 
   return (
-    <>
-      <div className="employees-header">
+    <div className="task-page">
+      <div className="tasks-header">
         <h2 className="title">TASKS</h2>
         <button
           type="button"
@@ -29,12 +30,14 @@ function TaskPage() {
           setActiveClassName={setActiveClassName}
         />
       </div>
-
-      {tasksList &&
-        tasksList.map(
-          (e) => !e.deleted && <TaskListItem key={e.id} item={e}></TaskListItem>
-        )}
-    </>
+      <div className="all-tasks">
+        {tasksList &&
+          tasksList.map(
+            (e) =>
+              !e.deleted && <TaskListItem key={e.id} item={e}></TaskListItem>
+          )}
+      </div>
+    </div>
   );
 }
 

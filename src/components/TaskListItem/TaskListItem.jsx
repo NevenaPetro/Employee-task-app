@@ -7,34 +7,41 @@ function TaskListItem({ item }) {
   const { deleteTask, setTaskModalData } = useContext(applicationContext);
 
   return (
-    <div>
-      <div>
-        <h3>{item.title}</h3>
-        <p>{item.dueDate}</p>
+    <div className="task">
+      <div className="task-title">
+        <h2>{item.title}</h2>
+        <p>
+          <b>Due date:</b> {item.dueDate}
+        </p>
       </div>
-      <p>{item.description}</p>
 
-      <p>{item.assignee}</p>
+      <div className="task-descr">
+        <p>{item.description}</p>
+      </div>
+      <div className="task-assignee">
+        <p>{item.assignee}</p>
+      </div>
+      <div className="task-btns">
+        <button
+          type="button"
+          onClick={() => {
+            setTaskModalData(item);
+          }}
+          className="btn-md"
+        >
+          update
+        </button>
 
-      <button
-        type="button"
-        onClick={() => {
-          setTaskModalData(item);
-        }}
-        className="btn-md"
-      >
-        update
-      </button>
-
-      <button
-        type="button"
-        onClick={() => {
-          deleteTask(item);
-        }}
-        className="btn-md"
-      >
-        delete
-      </button>
+        <button
+          type="button"
+          onClick={() => {
+            deleteTask(item);
+          }}
+          className="btn-md"
+        >
+          delete
+        </button>
+      </div>
     </div>
   );
 }

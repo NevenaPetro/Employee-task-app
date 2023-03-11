@@ -1,6 +1,46 @@
 @import '../../app.css';
 
-
+.task {
+    background-color: #eaeaea;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 23%;
+    min-height: 200px;
+}
+.task-title {
+    background-color: #3d3935;
+    color: #eaeaea;
+    width: 100%;
+    padding: 10px;
+}
+.task-title p {
+    font-size: 12px;
+    text-align: right;
+    color: #00a0df;
+    padding: 10px;
+}
+.task-descr {
+    padding: 20px;
+    font-size: 12px;
+}
+.task-assignee{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+}
+.task-btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
 
 
 

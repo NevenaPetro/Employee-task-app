@@ -1,5 +1,9 @@
 @import '../../app.css';
 
+.empl-page{
+  min-height: 100vh;
+}
+
 .employees-header {
   display: flex;
   justify-content: space-between;

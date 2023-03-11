@@ -1,0 +1,24 @@
+@import '../../app.css';
+
+.task-page {
+    background-color: #00a0df;
+    min-height: 100vh;
+}
+
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 60px;
+  color: #00a0df;
+  background-color: #eaeaea;
+  position: relative;
+  z-index: 1;
+}
+
+.all-tasks {
+  display: flex;
+  justify-content:flex-start;
+  align-items: start;
+  flex-wrap: wrap;
+  margin: 20px 60px;
+}
