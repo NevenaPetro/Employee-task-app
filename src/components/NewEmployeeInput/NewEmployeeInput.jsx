@@ -36,7 +36,7 @@ function NewEmployeeInput({ activeClassName, setActiveClassName }) {
     setActiveClassName(!activeClassName);
     setEmployeeId(employeeId + 1);
     const newEmployee = {
-      Id: employeeId,
+      id: employeeId,
       name: emplName,
       email: emplEmail,
       phone: emplPhone,

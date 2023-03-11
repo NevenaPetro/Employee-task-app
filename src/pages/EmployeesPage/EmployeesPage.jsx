@@ -13,7 +13,7 @@ function EmployeesPage() {
   return (
     <>
       <div className="employees-header">
-        <h1 className="title">Employees</h1>
+        <h2 className="title">EMPLOYEES</h2>
         <button
           type="button"
           className="btn-big"
@@ -35,7 +35,7 @@ function EmployeesPage() {
           <tr>
             <th></th>
             <th>Name</th>
-            <th>email</th>
+            <th>Email</th>
             <th>Phone</th>
             <th>Date of birth</th>
             <th>Monthly salary</th>

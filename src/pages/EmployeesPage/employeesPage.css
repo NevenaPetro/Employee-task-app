@@ -24,7 +24,7 @@
 }
 .input-wrap {
   position: absolute;
-  top: 183px;
+  top: 180px;
   width: 100%;
   z-index: 0;
   transition: all 0.3s ease-in-out;
