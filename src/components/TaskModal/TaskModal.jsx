@@ -48,7 +48,7 @@ function TaskModal({ item }) {
         }}
       >
         <div
-          className="modal"
+          className="modal-task"
           onClick={(event) => {
             event.stopPropagation();
           }}
@@ -61,28 +61,28 @@ function TaskModal({ item }) {
             X
           </button>
 
-          <form className="modal-form" onSubmit={changeTask}>
+          <form className="modal-task-form" onSubmit={changeTask}>
             <input
               type="text"
               placeholder={item.title}
               value={newTitle}
               onChange={handleTitleInputChange}
-              className="modal-input"
+              className="modal-task-input"
               
             ></input>
-            <input
+            <textarea
               type="text"
               placeholder={item.description}
               value={newDescr}
               onChange={handleDescrInputChange}
-              className="modal-input"
-            ></input>
+              className="modal-task-textarea"
+            ></textarea>
             <input
               type="text"
               placeholder={item.assignee}
               value={newAssignee}
               onChange={handleAssigneeInputChange}
-              className="modal-input"
+              className="modal-task-input"
             ></input>
 
             <input
@@ -90,7 +90,7 @@ function TaskModal({ item }) {
               placeholder={item.dueDate}
               value={newDueDate}
               onChange={handleDueDateInputChange}
-              className="modal-input"
+              className="modal-task-input"
             ></input>
 
             <button className="btn-md" type="submit">

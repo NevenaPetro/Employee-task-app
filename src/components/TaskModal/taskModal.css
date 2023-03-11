@@ -12,22 +12,23 @@
   backdrop-filter: blur(4.9px);
   z-index: 2;
 }
-.modal {
+.modal-task {
   background-color: #00a0df;
   position: fixed;
-  width: 100%;
-  min-height: 20%;
+  height: 100%;
+  width: 30%;
+  border: none;
+  padding: 30px 60px;
+}
+.modal-task-form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border: none;
+  margin: 60px;
 }
-.modal-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-}
+
 .close-btn {
   position: absolute;
   right: 15px;
@@ -46,10 +47,20 @@
   color: #00a0df;
   transition: all 0.3s ease;
 }
-.modal-input {
+.modal-task-input {
   background-color: #eaeaea;
   border: none;
   border-radius: 20px;
   padding: 5px 10px;
-  margin: 0 10px;
+  margin: 10px;
+  width: 200px;
+}
+.modal-task-textarea {
+  background-color: #eaeaea;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin: 10px;
+  min-height: 100px;
+  width: 200px;
 }

@@ -1,0 +1,40 @@
+@import '../../app.css';
+
+.create-new-input-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+  background-color: #00a0df;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 210px);
+  width: 270px;
+}
+.create-new-input-task input {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+.create-new-input-task textarea {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  min-height: 100px;
+}
+.btn-md {
+  border: none;
+  color: #eaeaea;
+  background-color: #3d3935;
+  border-radius: 20px;
+  font-weight: 700;
+  padding: 0 20px;
+  height: 32px;
+  margin: 0 10px;
+}
+.btn-md:hover {
+  cursor: pointer;
+  background-color: #eaeaea;
+  color: #3d3935;
+  transition: all 0.3s ease;
+}

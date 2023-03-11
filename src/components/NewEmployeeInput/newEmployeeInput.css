@@ -1,13 +1,13 @@
 @import '../../app.css';
 
-.create-new-input {
+.create-new-input-empl {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 60px;
   background-color: #00a0df;
 }
-.create-new-input input {
+.create-new-input-empl input {
   border: none;
   border-radius: 20px;
   padding: 5px 10px;

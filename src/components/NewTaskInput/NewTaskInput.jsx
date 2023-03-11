@@ -46,9 +46,9 @@ function NewTaskInput({ activeClassName, setActiveClassName }) {
 
   return (
     <>
-      <form className="create-new-input" onSubmit={createNewTask}>
+      <form className="create-new-input-task" onSubmit={createNewTask}>
         <input placeholder="Task Title" onChange={handleTaskTitleInput}></input>
-        <input placeholder="Task Description" onChange={handleTaskDescrInput}></input>
+        <textarea placeholder="Task Description" onChange={handleTaskDescrInput}></textarea>
         <input
           placeholder="Task Assignee"
           onChange={handleTaskAssigneeInput}

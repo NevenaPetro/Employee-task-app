@@ -7,7 +7,7 @@ import '../TasksPage/taskPage.css';
 
 function TaskPage() {
   const [activeClassName, setActiveClassName] = useState(true);
-  const inputHidden = 'input-hidden';
+  const inputHidden = 'input-hidden-task';
   const { tasksList } = useContext(applicationContext);
 
   return (
@@ -24,7 +24,7 @@ function TaskPage() {
           Create new task
         </button>
       </div>
-      <div className={`input-wrap ${activeClassName ? inputHidden : ''}`}>
+      <div className={`input-wrap-task ${activeClassName ? inputHidden : ''}`}>
         <NewTaskInput
           activeClassName={activeClassName}
           setActiveClassName={setActiveClassName}

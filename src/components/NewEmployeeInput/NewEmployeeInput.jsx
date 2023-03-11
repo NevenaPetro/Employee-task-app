@@ -49,7 +49,7 @@ function NewEmployeeInput({ activeClassName, setActiveClassName }) {
 
   return (
     <>
-      <form className="create-new-input" onSubmit={createNewEmployye}>
+      <form className="create-new-input-empl" onSubmit={createNewEmployye}>
         <input placeholder="Full Name" onChange={handleEmplNameInput}></input>
         <input placeholder="email" onChange={handleEmplEmailInput}></input>
         <input
