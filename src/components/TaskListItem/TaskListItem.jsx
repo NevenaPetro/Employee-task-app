@@ -10,10 +10,13 @@ function TaskListItem({ item }) {
     setTaskModalData,
     getAssigneeNameById,
     updateTask,
+    getProjectTitleById
   } = useContext(applicationContext);
   let start = 'START TASK';
   let finish = 'FINISH TASK';
 
+
+  console.log(item)
   function updateTaskStatus(item) {
     item.isDoing ? (item.isFinished = true) : (item.isDoing = true);
     updateTask(item);
@@ -27,6 +30,9 @@ function TaskListItem({ item }) {
         </p>
         <p>
           <b>Assignee:</b> {getAssigneeNameById(item.assignee)}
+        </p>
+        <p>
+          <b>Project:</b> {getProjectTitleById(item.project)}
         </p>
         {item.isFinished ? (
           <p>

@@ -7,14 +7,19 @@ function NewTaskInput() {
   const [taskTitle, setTaskTitle] = useState('');
   const [taskDescr, setTaskDescr] = useState('');
   const [taskAssignee, setTaskAssignee] = useState('');
+  const [taskProject, setTaskProject] = useState('');
   const [taskDueDate, setTaskDueDate] = useState(new Date());
   const [taskDateFinished, setTaskDateFinished] = useState(new Date());
   const [taskIsFinished, setTaskIsFinished] = useState(false);
   const [taskIsDoing, setTaskIsDoing] = useState(false);
 
-  const { createNewTask, employeesList, activeClassNameTask, setActiveClassNameTask} = useContext(
-    applicationContext
-  );
+  const {
+    createNewTask,
+    employeesList,
+    projectsList,
+    activeClassNameTask,
+    setActiveClassNameTask,
+  } = useContext(applicationContext);
 
   function handleTaskTitleInput(e) {
     setTaskTitle(e.target.value);
@@ -25,6 +30,9 @@ function NewTaskInput() {
   function handleTaskAssigneeInput(e) {
     setTaskAssignee(e.target.value);
   }
+  function handleTaskProjectInput(e) {
+    setTaskProject(e.target.value);
+  }
 
   function handleSubmitNewTask(event) {
     event.preventDefault();
@@ -32,15 +40,15 @@ function NewTaskInput() {
       title: taskTitle,
       description: taskDescr,
       assignee: taskAssignee,
+      project: taskProject,
       dueDate: taskDueDate,
       dateFinished: taskDateFinished,
       isFinished: taskIsFinished,
-      isDoing: taskIsDoing
+      isDoing: taskIsDoing,
     };
     createNewTask(newTask);
-    setActiveClassNameTask(!activeClassNameTask)
+    setActiveClassNameTask(!activeClassNameTask);
   }
- 
 
   return (
     <>
@@ -64,7 +72,10 @@ function NewTaskInput() {
         </div>
         <div className="label-input-task">
           <p>Task Due Date</p>
-          <DatePickerTask startDate={taskDueDate} setStartDate={setTaskDueDate} />
+          <DatePickerTask
+            startDate={taskDueDate}
+            setStartDate={setTaskDueDate}
+          />
         </div>
         <div className="label-input-task">
           <label htmlFor="descr">Task Description</label>
@@ -76,8 +87,42 @@ function NewTaskInput() {
         </div>
         <div className="label-input-task">
           <label htmlFor="assignee">Choose assignee</label>
-          <select name="assignee" id="cars" onChange={handleTaskAssigneeInput}>
-          {employeesList.map((e)=>{return <option key={e.id} value={e.id}>{e.name}</option>})}
+          <select
+            defaultValue={''}
+            required
+            name="assignee"
+            onChange={handleTaskAssigneeInput}
+          >
+            <option value="" disabled hidden>
+              Please Choose...
+            </option>
+            {employeesList.map((e) => {
+              return (
+                <option key={e.id} value={e.id}>
+                  {e.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div className="label-input-task">
+          <label htmlFor="project">Choose project</label>
+          <select
+            defaultValue={''}
+            required
+            name="project"
+            onChange={handleTaskProjectInput}
+          >
+            <option value="" disabled hidden>
+              Please Choose...
+            </option>
+            {projectsList.map((e) => {
+              return (
+                <option key={e.id} value={e.id}>
+                  {e.title}
+                </option>
+              );
+            })}
           </select>
         </div>
         <button type="submit" className="btn-md">

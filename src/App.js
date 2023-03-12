@@ -14,22 +14,27 @@ import {
 import { db } from './firebase.config';
 import HomePage from './pages/HomePage/HomePage';
 import EmployeesPage from './pages/EmployeesPage/EmployeesPage';
+import ProjectsPage from './pages/ProjectsPage/ProjectsPage';
 import TasksPage from './pages/TasksPage/TasksPage';
 import Header from './components/Header/Header';
 import AboutPage from './pages/AboutPage/AboutPage';
 import Footer from './components/Footer/Footer';
 import EmplModal from './components/EmplModal/EmplModal';
 import TaskModal from './components/TaskModal/TaskModal';
+import ProjModal from './components/ProjModal/ProjModal';
 
 import './app.css';
 
 function App() {
   const [employeesList, setEmployeesList] = useState([]);
   const [tasksList, setTasksList] = useState([]);
+  const [projectsList, setProjectsList] = useState([]);
   const [emplModalData, setEmplModalData] = useState(null);
   const [taskModalData, setTaskModalData] = useState(null);
+  const [projectModalData, setProjectModalData] = useState(null);
   const [activeClassName, setActiveClassName] = useState(true);
   const [activeClassNameTask, setActiveClassNameTask] = useState(true);
+  const [activeClassNameProject, setActiveClassNameProject] = useState(true);
 
   useEffect(() => {
     const fetchEmployeesList = async () => {
@@ -68,6 +73,7 @@ function App() {
             title: doc.data().title,
             description: doc.data().description,
             assignee: doc.data().assignee,
+            project: doc.data().project,
             dueDate: doc.data().dueDate.toDate(),
             dateFinished: doc.data().dateFinished.toDate(),
             isFinished: doc.data().isFinished,
@@ -81,10 +87,31 @@ function App() {
     fetchTasksList();
   }, []);
 
-  function createNewEmployee(newEmployee) {
+  useEffect(() => {
+    const fetchProjectsList = async () => {
+      try {
+        const q = query(collection(db, 'projects'));
+        const querySnap = await getDocs(q);
+        const projectsList = [];
+
+        querySnap.forEach((doc) => {
+          return projectsList.push({
+            id: doc.id,
+            title: doc.data().title,
+            description: doc.data().description,
+          });
+        });
+        setProjectsList(projectsList);
+      } catch (error) {}
+    };
+    fetchProjectsList();
+  }, []);
+
+  async function createNewEmployee(newEmployee) {
     setActiveClassName(!activeClassName);
+    const docRef = await addDoc(collection(db, 'employees'), newEmployee);
+    newEmployee.id = docRef.id;
     setEmployeesList([...employeesList, newEmployee]);
-    addDoc(collection(db, 'employees'), newEmployee);
   }
 
   function deleteEmployee(item) {
@@ -130,7 +157,35 @@ function App() {
   }
 
   function getAssigneeNameById(id) {
-    return employeesList.find((e) => e.id === id).name;
+    let employee = employeesList.find((e) => e.id === id);
+    return employee ? employee.name : 'deleted emloyee';
+  }
+
+  async function createNewProject(newProject) {
+    setActiveClassNameProject(!activeClassNameProject);
+    const docRef = await addDoc(collection(db, 'projects'), newProject);
+    newProject.id = docRef.id;
+    setProjectsList([...projectsList, newProject]);
+  }
+
+  function deleteProject(item) {
+    setProjectsList(projectsList.filter((e) => e.id !== item.id));
+    deleteDoc(doc(db, 'projects', item.id));
+  }
+  function updateProject(item) {
+    let differenceList = projectsList.filter((e) => e.id !== item.id);
+    setProjectsList([...differenceList, item]);
+    updateDoc(doc(db, 'projects', item.id), {
+      title: item.title,
+      description: item.description,
+    });
+  }
+  function getProjectTitleById(id) {
+    console.log(id)
+    console.log(projectsList)
+
+    let project = projectsList.find((e) => e.id === id);
+    return project ? project.title : 'deleted project';
   }
 
   return (
@@ -153,18 +208,27 @@ function App() {
         createNewTask,
         activeClassNameTask,
         setActiveClassNameTask,
+        activeClassNameProject,
+        setActiveClassNameProject,
+        createNewProject,
+        deleteProject,
+        updateProject,
+        projectsList,
+        setProjectModalData,
+        getProjectTitleById
       }}
     >
       <Header />
-
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route path="/tasks" element={<TasksPage />} />
         <Route path="/employees" element={<EmployeesPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
       {emplModalData && <EmplModal item={emplModalData} />}
       {taskModalData && <TaskModal item={taskModalData} />}
+      {projectModalData && <ProjModal item={projectModalData} />}
       <Footer />
     </ApplicationProvider>
   );

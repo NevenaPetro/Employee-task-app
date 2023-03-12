@@ -12,7 +12,7 @@
   backdrop-filter: blur(4.9px);
   z-index: 2;
 }
-.modal-task {
+.modal-proj {
   background-color: #00a0df;
   position: fixed;
   height: 100%;
@@ -21,15 +21,16 @@
   padding: 30px 60px;
   
 }
-.modal-task-form {
+.modal-proj-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: none;
   color: #eaeaea;
+  margin-top: 20px;
 }
-.modal-task-form input {
+.modal-proj-form input {
   background-color: #eaeaea;
   border: none;
   border-radius: 20px;
@@ -38,32 +39,21 @@
   width: 220px;
   height: 38px;
 }
-.modal-task-form select {
+
+.modal-proj-form textarea {
   background-color: #eaeaea;
   border: none;
   border-radius: 20px;
   padding: 5px 10px;
   margin: 5px 10px;
-  width: 220px;
-  height: 38px;
-}
-.modal-task-form textarea {
-  background-color: #eaeaea;
-  border: none;
-  border-radius: 20px;
-  padding: 5px 10px;
-  margin: 5px 10px;
-  min-height: 150px;
+  min-height: 250px;
   width: 220px;
 }
-.modal-task-form label {
+.modal-proj-form label {
   margin: 5px 10px ;
   width: 100%;
 }
-.modal-task-form p {
-  margin: 5px 10px ;
-  width: 100%;
-}
+
 
 .close-btn {
   position: absolute;

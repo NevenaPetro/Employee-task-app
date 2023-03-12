@@ -1,0 +1,54 @@
+@import '../../app.css';
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 60px;
+  background-color: #eaeaea;
+  color: #3d3935;
+  position: relative;
+  z-index: 1;
+}
+.btn-big {
+  border: solid 1px #00a0df;
+  color: #00a0df;
+  border-radius: 20px;
+  font-weight: 700;
+  padding: 0 20px;
+  height: 40px;
+}
+.btn-big:hover {
+  cursor: pointer;
+  background-color: #00a0df;
+  color: #eaeaea;
+  transition: all 0.3s ease;
+}
+.input-wrap-project {
+  position: absolute;
+  top: 180px;
+  width: 100%;
+  z-index: 0;
+  transition: all 0.3s ease-in-out;
+}
+.input-hidden-project {
+  top: 135px;
+}
+.all-projects {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex-wrap: wrap;
+  margin: 20px 60px;
+}
+.project {
+  background-color: #00a0df;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 23%;
+  min-height: 200px;
+  border-radius: 20px;
+}

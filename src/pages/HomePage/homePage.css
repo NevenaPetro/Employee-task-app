@@ -1,0 +1,6 @@
+@import '../../app.css';
+
+.home-page {
+    background-color: #eaeaea;
+    min-height: 100vh;
+}

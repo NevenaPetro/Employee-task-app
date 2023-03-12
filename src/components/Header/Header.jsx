@@ -2,7 +2,6 @@ import React from 'react';
 import '../Header/header.css';
 import { Link } from 'react-router-dom';
 
-
 function Header() {
   return (
     <>
@@ -19,6 +18,9 @@ function Header() {
           </Link>
           <Link to="/employees">
             <button className="header-btn">EMPLOYEES</button>
+          </Link>
+          <Link to="/projects">
+            <button className="header-btn">PROJECTS</button>
           </Link>
           <Link to="/about">
             <button className="header-btn-about">About.</button>

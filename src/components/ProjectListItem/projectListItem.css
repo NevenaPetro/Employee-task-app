@@ -1,40 +1,69 @@
 @import '../../app.css';
 
-.task-title {
-  background-color: #3d3935;
-  color: #eaeaea;
+.project-title {
+  background-color: #eaeaea;
+  color: #3d3935;
   width: 100%;
   padding: 20px;
   border-radius: 20px;
 }
-.task-title p {
+.project-title p {
   font-size: 12px;
   text-align: right;
   color: #00a0df;
   padding: 5px 10px 0 10px;
 }
-.task-descr {
+.project-descr {
   width: 100%;
 }
-.task-descr p {
+.project-descr p {
   padding: 15px 20px;
   font-size: 12px;
 }
+.project-tasks {
+  padding: 15px 20px;
+  font-size: 12px;
+  width: 100%;
+}
+.taskToDo {
+  padding: 5px 15px;
+  background-color: #fcf5bf;
+  color: #3d3935;
+  min-height: 30px;
+  margin: 5px;
+  border-radius: 15px;
+}
+.taskDoing {
+  padding: 5px 15px;
+  background-color: #ffec6e;
+  color: #3d3935;
+  min-height: 30px;
+  margin: 5px;
+  border-radius: 15px;
+}
+.taskDone {
+  padding: 5px 15px;
+  background-color: #ffde06;
+  color: #3d3935;
+  min-height: 30px;
+  margin: 5px;
+  border-radius: 15px;
+}
 
-.task-btns {
+.project-btns {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
 }
-.task-status-btn {
+.project-status-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
-.task-status-btn button {
+.project-status-btn button {
   background-color: #00a0df;
   color: #eaeaea;
   width: 80%;
@@ -45,7 +74,7 @@
   border-radius: 20px;
   margin-bottom: 20px;
 }
-.task-status-btn button:hover {
+.project-status-btn button:hover {
   cursor: pointer;
   border: 1px solid #00a0df;
   background-color: #eaeaea;

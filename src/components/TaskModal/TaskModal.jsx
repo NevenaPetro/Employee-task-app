@@ -5,10 +5,13 @@ import DatePickerTask from '../DatePickerTask/DatePickerTask';
 import '../TaskModal/taskModal.css';
 
 function TaskModal({ item }) {
-  const { setTaskModalData, updateTask } = useContext(applicationContext);
+  const { setTaskModalData, updateTask, employeesList, projectsList } = useContext(
+    applicationContext
+  );
   const [newTitle, setNewTitle] = useState(item.title);
   const [newDescr, setNewDescr] = useState(item.description);
   const [newAssignee, setNewAssignee] = useState(item.assignee);
+  const [newProject, setNewProject] = useState(item.project);
   const [newDueDate, setNewDueDate] = useState(item.dueDate);
   const [newDateFinished, setNewDateFinished] = useState(item.dateFinished);
   const [newIsFinished, setNewIsFinished] = useState(item.isFinished);
@@ -21,6 +24,7 @@ function TaskModal({ item }) {
       title: newTitle,
       description: newDescr,
       assignee: newAssignee,
+      project: newProject,
       dueDate: newDueDate,
       dateFinished: newDateFinished,
       isFinished: newIsFinished,
@@ -40,7 +44,10 @@ function TaskModal({ item }) {
   function handleAssigneeInputChange(e) {
     setNewAssignee(e.target.value);
   }
-
+  function handleProjectInputChange(e) {
+    setNewProject(e.target.value);
+  }
+  
   return (
     <>
       <div
@@ -64,32 +71,56 @@ function TaskModal({ item }) {
           </button>
 
           <form className="modal-task-form" onSubmit={changeTask}>
+            <label htmlFor="title">Task Title</label>
             <input
               type="text"
               placeholder={item.title}
               value={newTitle}
               onChange={handleTitleInputChange}
-              className="modal-task-input"
+              name="title"
             ></input>
+            <p>Task Due Date</p>
+            <DatePickerTask
+              startDate={newDueDate}
+              setStartDate={setNewDueDate}
+            />
+            <label htmlFor="descr">Task Description</label>
             <textarea
               type="text"
               placeholder={item.description}
               value={newDescr}
               onChange={handleDescrInputChange}
-              className="modal-task-textarea"
+              name="descr"
             ></textarea>
-            <input
-              type="text"
-              placeholder={item.assignee}
-              value={newAssignee}
+            <label htmlFor="assignee">Choose assignee</label>
+            <select
+              value={item.assignee}
+              name="assignee"
               onChange={handleAssigneeInputChange}
-              className="modal-task-input"
-            ></input>
-
-            <DatePickerTask
-              startDate={newDueDate}
-              setStartDate={setNewDueDate}
-            />
+            >
+              {employeesList.map((e) => {
+                return (
+                  <option key={e.id} value={e.id}>
+                    {e.name}
+                  </option>
+                );
+              })}
+            </select>
+            <label htmlFor="project">Choose project</label>
+            <select
+              value={item.project}
+              name="project"
+              onChange={handleProjectInputChange}
+            >
+              {projectsList.map((e) => {
+                return (
+                  <option key={e.id} value={e.id}>
+                    {e.title}
+                  </option>
+                );
+              })}
+            </select>
+            
 
             <button className="btn-md" type="submit">
               update
