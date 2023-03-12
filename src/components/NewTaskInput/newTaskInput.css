@@ -34,6 +34,13 @@
   margin: 5px 0 20px;
   width: 220px;
 }
+.label-input-task select{
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px 0 20px;
+  width: 220px;
+}
 .btn-md {
   border: none;
   color: #eaeaea;

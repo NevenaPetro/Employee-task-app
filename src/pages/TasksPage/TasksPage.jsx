@@ -6,9 +6,10 @@ import TaskListItem from '../../components/TaskListItem/TaskListItem';
 import '../TasksPage/taskPage.css';
 
 function TaskPage() {
-  const [activeClassName, setActiveClassName] = useState(true);
-  const inputHidden = 'input-hidden-task';
-  const { tasksList } = useContext(applicationContext);
+  const inputHiddenTask = 'input-hidden-task';
+  const { tasksList, activeClassNameTask, setActiveClassNameTask } = useContext(
+    applicationContext
+  );
 
   return (
     <div className="task-page">
@@ -18,24 +19,26 @@ function TaskPage() {
           type="button"
           className="btn-big"
           onClick={() => {
-            setActiveClassName(!activeClassName);
+            setActiveClassNameTask(!activeClassNameTask);
           }}
         >
           Create new task
         </button>
       </div>
-      <div className={`input-wrap-task ${activeClassName ? inputHidden : ''}`}>
-        <NewTaskInput
-          activeClassName={activeClassName}
-          setActiveClassName={setActiveClassName}
-        />
+      <div
+        className={`input-wrap-task ${
+          activeClassNameTask ? inputHiddenTask : ''
+        }`}
+      >
+        <NewTaskInput />
       </div>
       <div className="all-tasks">
         {tasksList &&
-          tasksList.map(
-            (e) =>
-              !e.deleted && <TaskListItem key={e.id} item={e}></TaskListItem>
-          )}
+          tasksList.map((e) => (
+            <div key={e.id} className="task">
+              <TaskListItem item={e}></TaskListItem>
+            </div>
+          ))}
       </div>
     </div>
   );

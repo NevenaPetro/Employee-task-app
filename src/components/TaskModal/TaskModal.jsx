@@ -10,6 +10,9 @@ function TaskModal({ item }) {
   const [newDescr, setNewDescr] = useState(item.description);
   const [newAssignee, setNewAssignee] = useState(item.assignee);
   const [newDueDate, setNewDueDate] = useState(item.dueDate);
+  const [newDateFinished, setNewDateFinished] = useState(item.dateFinished);
+  const [newIsFinished, setNewIsFinished] = useState(item.isFinished);
+  const [newIsDoing, setNewIsDoing] = useState(item.isDoing);
 
   function changeTask(e) {
     e.preventDefault();
@@ -19,7 +22,9 @@ function TaskModal({ item }) {
       description: newDescr,
       assignee: newAssignee,
       dueDate: newDueDate,
-      deleted: false,
+      dateFinished: newDateFinished,
+      isFinished: newIsFinished,
+      isDoing: newIsDoing,
     };
     updateTask(updatedTask);
     setTaskModalData(null);
@@ -35,7 +40,6 @@ function TaskModal({ item }) {
   function handleAssigneeInputChange(e) {
     setNewAssignee(e.target.value);
   }
-  
 
   return (
     <>

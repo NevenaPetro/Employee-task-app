@@ -10,8 +10,6 @@ function EmployeesPage() {
   const { employeesList, activeClassName, setActiveClassName } = useContext(
     applicationContext
   );
-
-  console.log(employeesList);
   return (
     <div className="empl-page">
       <div className="employees-header">

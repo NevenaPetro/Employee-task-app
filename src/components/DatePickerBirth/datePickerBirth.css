@@ -1,3 +1,5 @@
 .react-datepicker-wrapper {
     width: unset;
+    border: none;
+    border-radius: 20px;
 }

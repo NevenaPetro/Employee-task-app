@@ -1,7 +1,10 @@
 @import '../../app.css';
 
-.empl-page{
-  min-height: 100vh;
+.empl-page tr {
+  height: 10px;
+}
+.empl-page td {
+  height: 10px;
 }
 .employees-header {
   display: flex;
@@ -40,8 +43,10 @@
 .empl-list {
   margin: 80px 0 80px 120px;
   width: 80%;
+  height: 50%;
 }
 .empl-list th {
  text-align: left;
 }
+
 

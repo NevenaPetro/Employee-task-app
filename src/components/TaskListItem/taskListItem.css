@@ -1,40 +1,53 @@
 @import '../../app.css';
 
-.task {
-    background-color: #eaeaea;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 23%;
-    min-height: 200px;
-}
 .task-title {
-    background-color: #3d3935;
-    color: #eaeaea;
-    width: 100%;
-    padding: 10px;
+  background-color: #3d3935;
+  color: #eaeaea;
+  width: 100%;
+  padding: 20px;
 }
 .task-title p {
-    font-size: 12px;
-    text-align: right;
-    color: #00a0df;
-    padding: 10px 10px 0 10px;
+  font-size: 12px;
+  text-align: right;
+  color: #00a0df;
+  padding: 5px 10px 0 10px;
 }
 .task-descr {
-    padding: 20px;
-    font-size: 12px;
+  width: 100%;
+}
+.task-descr p {
+  padding: 15px;
+  font-size: 12px;
 }
 
 .task-btns {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
 }
-
-
-
+.task-status-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.task-status-btn button {
+  background-color: #00a0df;
+  color: #eaeaea;
+  width: 80%;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.task-status-btn button:hover {
+  cursor: pointer;
+  border: 1px solid #00a0df;
+  background-color: #eaeaea;
+  color: #00a0df;
+  transition: all 0.3s ease;
+}

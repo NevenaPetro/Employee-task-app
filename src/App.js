@@ -9,7 +9,7 @@ import {
   query,
   doc,
   deleteDoc,
-  updateDoc
+  updateDoc,
 } from 'firebase/firestore';
 import { db } from './firebase.config';
 import HomePage from './pages/HomePage/HomePage';
@@ -26,10 +26,10 @@ import './app.css';
 function App() {
   const [employeesList, setEmployeesList] = useState([]);
   const [tasksList, setTasksList] = useState([]);
-  const [taskId, setTaskId] = useState(1);
   const [emplModalData, setEmplModalData] = useState(null);
   const [taskModalData, setTaskModalData] = useState(null);
   const [activeClassName, setActiveClassName] = useState(true);
+  const [activeClassNameTask, setActiveClassNameTask] = useState(true);
 
   useEffect(() => {
     const fetchEmployeesList = async () => {
@@ -48,10 +48,37 @@ function App() {
             salary: doc.data().salary,
           });
         });
+
         setEmployeesList(employeesList);
       } catch (error) {}
     };
     fetchEmployeesList();
+  }, []);
+
+  useEffect(() => {
+    const fetchTasksList = async () => {
+      try {
+        const q = query(collection(db, 'tasks'));
+        const querySnap = await getDocs(q);
+        const tasksList = [];
+
+        querySnap.forEach((doc) => {
+          return tasksList.push({
+            id: doc.id,
+            title: doc.data().title,
+            description: doc.data().description,
+            assignee: doc.data().assignee,
+            dueDate: doc.data().dueDate.toDate(),
+            dateFinished: doc.data().dateFinished.toDate(),
+            isFinished: doc.data().isFinished,
+            isDoing: doc.data().isDoing,
+          });
+        });
+
+        setTasksList(tasksList);
+      } catch (error) {}
+    };
+    fetchTasksList();
   }, []);
 
   function createNewEmployee(newEmployee) {
@@ -62,28 +89,46 @@ function App() {
 
   function deleteEmployee(item) {
     setEmployeesList(employeesList.filter((e) => e.id !== item.id));
-    deleteDoc(doc(db, "employees", item.id));
+    deleteDoc(doc(db, 'employees', item.id));
   }
   function updateEmployee(item) {
-    let deferenceList = employeesList.filter((e) => e.id !== item.id);
-    setEmployeesList([...deferenceList, item]);
-    console.log(item)
-    updateDoc(doc(db, "employees", item.id), {
+    let differenceList = employeesList.filter((e) => e.id !== item.id);
+    setEmployeesList([...differenceList, item]);
+    updateDoc(doc(db, 'employees', item.id), {
       name: item.name,
       email: item.email,
       phone: item.phone,
       dateOfBirth: item.dateOfBirth,
-      salary: item.salary
+      salary: item.salary,
     });
   }
+
+  async function createNewTask(newTask) {
+    setActiveClassName(!activeClassName);
+    const docRef = await addDoc(collection(db, 'tasks'), newTask);
+    newTask.id = docRef.id;
+    setTasksList([...tasksList, newTask]);
+  }
+
   function deleteTask(item) {
-    tasksList.find((e) => e.id === item.id).deleted = true;
-    setTasksList([...tasksList]);
+    setTasksList(tasksList.filter((e) => e.id !== item.id));
+    deleteDoc(doc(db, 'tasks', item.id));
   }
+
   function updateTask(item) {
-    let deferenceList = tasksList.filter((e) => e.id !== item.id);
-    setTasksList([...deferenceList, item]);
+    let differenceList = tasksList.filter((e) => e.id !== item.id);
+    setTasksList([...differenceList, item]);
+    updateDoc(doc(db, 'tasks', item.id), {
+      title: item.title,
+      description: item.description,
+      assignee: item.assignee,
+      dueDate: item.dueDate,
+      dateFinished: item.dateFinished,
+      isFinished: item.isFinished,
+      isDoing: item.isDoing,
+    });
   }
+
   function getAssigneeNameById(id) {
     return employeesList.find((e) => e.id === id).name;
   }
@@ -99,14 +144,15 @@ function App() {
         deleteEmployee,
         updateEmployee,
         setEmplModalData,
-        taskId,
-        setTaskId,
         deleteTask,
         setTaskModalData,
         updateTask,
         getAssigneeNameById,
         activeClassName,
-        setActiveClassName
+        setActiveClassName,
+        createNewTask,
+        activeClassNameTask,
+        setActiveClassNameTask,
       }}
     >
       <Header />

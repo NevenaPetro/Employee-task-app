@@ -3,13 +3,16 @@ import { applicationContext } from '../../context/AplicationContext';
 import './newTaskInput.css';
 import DatePickerTask from '../DatePickerTask/DatePickerTask';
 
-function NewTaskInput({ activeClassName, setActiveClassName }) {
+function NewTaskInput() {
   const [taskTitle, setTaskTitle] = useState('');
   const [taskDescr, setTaskDescr] = useState('');
-  const [taskAssignee, setTaskAssignee] = useState(1);
+  const [taskAssignee, setTaskAssignee] = useState('');
   const [taskDueDate, setTaskDueDate] = useState(new Date());
+  const [taskDateFinished, setTaskDateFinished] = useState(new Date());
+  const [taskIsFinished, setTaskIsFinished] = useState(false);
+  const [taskIsDoing, setTaskIsDoing] = useState(false);
 
-  const { tasksList, setTasksList, taskId, setTaskId , employeesList} = useContext(
+  const { createNewTask, employeesList, activeClassNameTask, setActiveClassNameTask} = useContext(
     applicationContext
   );
 
@@ -20,32 +23,33 @@ function NewTaskInput({ activeClassName, setActiveClassName }) {
     setTaskDescr(e.target.value);
   }
   function handleTaskAssigneeInput(e) {
-    setTaskAssignee(+e.target.value);
+    setTaskAssignee(e.target.value);
   }
 
-  function createNewTask(event) {
+  function handleSubmitNewTask(event) {
     event.preventDefault();
-    setActiveClassName(!activeClassName);
-    setTaskId(taskId + 1);
     const newTask = {
-      id: taskId,
       title: taskTitle,
       description: taskDescr,
       assignee: taskAssignee,
       dueDate: taskDueDate,
-      deleted: false,
+      dateFinished: taskDateFinished,
+      isFinished: taskIsFinished,
+      isDoing: taskIsDoing
     };
-    setTasksList([...tasksList, newTask]);
+    createNewTask(newTask);
+    setActiveClassNameTask(!activeClassNameTask)
   }
+ 
 
   return (
     <>
-      <form className="create-new-input-task" onSubmit={createNewTask}>
+      <form className="create-new-input-task" onSubmit={handleSubmitNewTask}>
         <button
           type="button"
           className="close-btn"
           onClick={() => {
-            setActiveClassName(!activeClassName);
+            setActiveClassNameTask(!activeClassNameTask);
           }}
         >
           X
@@ -73,7 +77,7 @@ function NewTaskInput({ activeClassName, setActiveClassName }) {
         <div className="label-input-task">
           <label htmlFor="assignee">Choose assignee</label>
           <select name="assignee" id="cars" onChange={handleTaskAssigneeInput}>
-          {employeesList.map((e)=>{return <option value={e.id}>{e.name}</option>})}
+          {employeesList.map((e)=>{return <option key={e.id} value={e.id}>{e.name}</option>})}
           </select>
         </div>
         <button type="submit" className="btn-md">
