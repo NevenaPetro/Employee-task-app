@@ -17,7 +17,7 @@ import EmployeesPage from './pages/EmployeesPage/EmployeesPage';
 import ProjectsPage from './pages/ProjectsPage/ProjectsPage';
 import TasksPage from './pages/TasksPage/TasksPage';
 import Header from './components/Header/Header';
-import AboutPage from './pages/AboutPage/AboutPage';
+import ReportsPage from './pages/ReportsPage/ReportsPage';
 import Footer from './components/Footer/Footer';
 import EmplModal from './components/EmplModal/EmplModal';
 import TaskModal from './components/TaskModal/TaskModal';
@@ -75,11 +75,13 @@ function App() {
             assignee: doc.data().assignee,
             project: doc.data().project,
             dueDate: doc.data().dueDate.toDate(),
-            dateFinished: doc.data().dateFinished.toDate(),
+            dateFinished: doc.data().dateFinished ? doc.data().dateFinished.toDate() : null,
             isFinished: doc.data().isFinished,
             isDoing: doc.data().isDoing,
           });
         });
+        console.log("tasksList")
+        console.log(tasksList)
 
         setTasksList(tasksList);
       } catch (error) {}
@@ -181,9 +183,6 @@ function App() {
     });
   }
   function getProjectTitleById(id) {
-    console.log(id)
-    console.log(projectsList)
-
     let project = projectsList.find((e) => e.id === id);
     return project ? project.title : 'deleted project';
   }
@@ -224,7 +223,7 @@ function App() {
         <Route path="/tasks" element={<TasksPage />} />
         <Route path="/employees" element={<EmployeesPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
       </Routes>
       {emplModalData && <EmplModal item={emplModalData} />}
       {taskModalData && <TaskModal item={taskModalData} />}

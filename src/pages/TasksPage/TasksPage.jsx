@@ -10,6 +10,7 @@ function TaskPage() {
   const { tasksList, activeClassNameTask, setActiveClassNameTask } = useContext(
     applicationContext
   );
+  console.log(tasksList)
 
   return (
     <div className="task-page">

@@ -5,17 +5,17 @@ import DatePickerTask from '../DatePickerTask/DatePickerTask';
 import '../TaskModal/taskModal.css';
 
 function TaskModal({ item }) {
-  const { setTaskModalData, updateTask, employeesList, projectsList } = useContext(
-    applicationContext
-  );
+  const {
+    setTaskModalData,
+    updateTask,
+    employeesList,
+    projectsList,
+  } = useContext(applicationContext);
   const [newTitle, setNewTitle] = useState(item.title);
   const [newDescr, setNewDescr] = useState(item.description);
   const [newAssignee, setNewAssignee] = useState(item.assignee);
   const [newProject, setNewProject] = useState(item.project);
   const [newDueDate, setNewDueDate] = useState(item.dueDate);
-  const [newDateFinished, setNewDateFinished] = useState(item.dateFinished);
-  const [newIsFinished, setNewIsFinished] = useState(item.isFinished);
-  const [newIsDoing, setNewIsDoing] = useState(item.isDoing);
 
   function changeTask(e) {
     e.preventDefault();
@@ -26,9 +26,6 @@ function TaskModal({ item }) {
       assignee: newAssignee,
       project: newProject,
       dueDate: newDueDate,
-      dateFinished: newDateFinished,
-      isFinished: newIsFinished,
-      isDoing: newIsDoing,
     };
     updateTask(updatedTask);
     setTaskModalData(null);
@@ -47,7 +44,7 @@ function TaskModal({ item }) {
   function handleProjectInputChange(e) {
     setNewProject(e.target.value);
   }
-  
+
   return (
     <>
       <div
@@ -120,7 +117,6 @@ function TaskModal({ item }) {
                 );
               })}
             </select>
-            
 
             <button className="btn-md" type="submit">
               update

@@ -5,7 +5,7 @@ function HomePage() {
   return (
     <div className='home-page'>
       
-      <h3></h3>
+      <h3>This is homepage</h3>
     </div>
   )
 }

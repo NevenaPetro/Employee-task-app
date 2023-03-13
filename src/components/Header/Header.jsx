@@ -22,8 +22,8 @@ function Header() {
           <Link to="/projects">
             <button className="header-btn">PROJECTS</button>
           </Link>
-          <Link to="/about">
-            <button className="header-btn-about">About.</button>
+          <Link to="/reports">
+            <button className="header-btn-reports">Reports.</button>
           </Link>
         </nav>
       </header>

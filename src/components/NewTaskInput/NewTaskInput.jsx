@@ -9,9 +9,8 @@ function NewTaskInput() {
   const [taskAssignee, setTaskAssignee] = useState('');
   const [taskProject, setTaskProject] = useState('');
   const [taskDueDate, setTaskDueDate] = useState(new Date());
-  const [taskDateFinished, setTaskDateFinished] = useState(new Date());
-  const [taskIsFinished, setTaskIsFinished] = useState(false);
-  const [taskIsDoing, setTaskIsDoing] = useState(false);
+  
+  
 
   const {
     createNewTask,
@@ -42,9 +41,6 @@ function NewTaskInput() {
       assignee: taskAssignee,
       project: taskProject,
       dueDate: taskDueDate,
-      dateFinished: taskDateFinished,
-      isFinished: taskIsFinished,
-      isDoing: taskIsDoing,
     };
     createNewTask(newTask);
     setActiveClassNameTask(!activeClassNameTask);

@@ -40,7 +40,7 @@
   cursor: pointer;
 }
 
-.header-btn-about {
+.header-btn-reports {
     border: none;
     background-color: #00a0df;
     color:#eaeaea;
@@ -49,6 +49,6 @@
     font-weight: 700;
     height: 100%;
 }
-.header-btn-about:hover {
+.header-btn-reports:hover {
   cursor: pointer;
 }
