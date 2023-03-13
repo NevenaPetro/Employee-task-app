@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# About
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Employee-Task App is a simple web application that allows you to assign employee to their tasks and track their progress. 
 
-## Available Scripts
+## Features
+You can create, read, update, and delete tasks.
+You can create, read, update, and delete employee.
+You can create, read, update, and delete project (set of tasks).
+You can view the progress of all tasks and projects.
+Responsive design that works only on desktop.
 
-In the project directory, you can run:
+## Setup guide
 
-### `npm start`
+The code of this app is on GitHub:
+https://github.com/NevenaPetro/Employee-task-app
+In order to start the app you must follow these steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+download repository
+npm install
+npm start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This app is created with React.js. 
+Storage is on Firebase, so it needs a web connection in order to work.
 
-### `npm test`
+## Folder structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Folder src contains main files like index.js, App.js, app.css, firebase.config.js, and two main folders, components, and pages. Folder pages include five pages that structure the app, and folder components contain all other components that are in the app.
 
-### `npm run build`
+## Description of the additional functionalities
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `Additional entity - Project`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Besides entities like EMPLOYEE and TASK, in this app, there is added another one, PROJECT. A project can be created, read, updated, and deleted. Every project contains a title, description, and belonging tasks. Tasks are presented in three colors for various states of task status. Each project has displayed a number of finished and total number of tasks. I choose to add projects because that is a usual feature in these kinds of apps. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Additional statistic - Urgent tasks`
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Besides Top five employees, I choose to add another statistic that shows tasks by the time remaining until the due date. Only tasks that are not finished are shown. It seemed useful to have an easy way to see which tasks are urgent and need to be done first.
