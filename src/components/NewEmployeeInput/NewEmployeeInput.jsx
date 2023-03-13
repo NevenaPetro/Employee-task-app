@@ -14,7 +14,7 @@ function NewEmployeeInput() {
   const {
     createNewEmployee
   } = useContext(applicationContext);
-  console.log("asasasasasas")
+  
 
   function handleSubmitNewEmpl(event) {
     event.preventDefault();

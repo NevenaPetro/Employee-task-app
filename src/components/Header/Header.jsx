@@ -16,11 +16,11 @@ function Header() {
           <Link to="/tasks">
             <button className="header-btn">TASKS</button>
           </Link>
-          <Link to="/employees">
-            <button className="header-btn">EMPLOYEES</button>
-          </Link>
           <Link to="/projects">
             <button className="header-btn">PROJECTS</button>
+          </Link>
+          <Link to="/employees">
+            <button className="header-btn">EMPLOYEES</button>
           </Link>
           <Link to="/reports">
             <button className="header-btn-reports">Reports.</button>

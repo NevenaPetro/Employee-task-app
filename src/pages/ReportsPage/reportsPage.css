@@ -3,13 +3,22 @@
 .reports-page {
   background-color: #eaeaea;
   min-height: 100vh;
+  padding: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 .top-empoloyees {
-  padding: 80px 60px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px 45px;
 }
 .top-empoloyees h1 {
   color: #00a0df;
   text-decoration: underline;
+}
+.top-empoloyees h5 {
+  margin-bottom: 30px;
 }
 .top-list-wrap {
   margin: 20px;
@@ -20,15 +29,23 @@
   align-items: center;
   width: 100%;
 }
-
+.top-list-wrap td {
+  padding: 5px;
+}
 .top-list-wrap th {
   margin: 5px;
-  border: 1px solid red;
   text-align: left;
+  border-bottom: 1px solid #00a0df;
+  padding: 5px;
+  font-size: 14px;
 }
 .blue-dot {
   background-color: #00a0df;
   width: 11px;
   height: 11px;
+}
+.center p {
+  text-align: center;
+  color: #00a0df;
 }
 

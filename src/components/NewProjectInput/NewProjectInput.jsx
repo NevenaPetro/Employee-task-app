@@ -2,15 +2,14 @@ import React, { useState, useContext } from 'react';
 import { applicationContext } from '../../context/AplicationContext';
 import './newProjectInput.css';
 
-
 function NewProjectInput() {
-
   const [projTitle, setProjTitle] = useState('');
   const [projDescr, setProjDescr] = useState('');
 
-
   const {
-    createNewProject
+    createNewProject,
+    setActiveClassNameProject,
+    activeClassNameProject,
   } = useContext(applicationContext);
 
   function handleSubmitNewProject(event) {
@@ -20,7 +19,7 @@ function NewProjectInput() {
       description: projDescr,
     };
 
-    createNewProject(newProject)
+    createNewProject(newProject);
   }
 
   function handleProjTitleInput(e) {
@@ -29,21 +28,37 @@ function NewProjectInput() {
   function handleProjDescrInput(e) {
     setProjDescr(e.target.value);
   }
-  
 
   return (
     <>
       <form className="create-new-input-proj" onSubmit={handleSubmitNewProject}>
-        <input
-          placeholder="Title"
-          onChange={handleProjTitleInput}
-          required
-        ></input>
-        <input
-          placeholder="Description"
-          onChange={handleProjDescrInput}
-          required
-        ></input>
+        <button
+          type="button"
+          className="close-btn"
+          onClick={() => {
+            setActiveClassNameProject(!activeClassNameProject);
+          }}
+        >
+          X
+        </button>
+        <div className="label-input-proj">
+          <label htmlFor="title">Project Title</label>
+          <input
+            placeholder="Title"
+            onChange={handleProjTitleInput}
+            required
+            name="title"
+          ></input>
+        </div>
+        <div className="label-input-proj">
+          <label htmlFor="description">Project Description</label>
+          <textarea
+            placeholder="Description"
+            onChange={handleProjDescrInput}
+            required
+            name="description"
+          ></textarea>
+        </div>
         <button type="submit" className="btn-md">
           Create
         </button>

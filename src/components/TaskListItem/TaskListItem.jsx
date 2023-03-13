@@ -14,16 +14,17 @@ function TaskListItem({ item }) {
   } = useContext(applicationContext);
   let start = 'START TASK';
   let finish = 'FINISH TASK';
+  let now = new Date();
 
-  console.log(item);
-  function updateTaskStatus(item) {
+  function updateTaskStatus() {
     if (item.isDoing) {
       item.isFinished = true;
-      item.dateFinished = new Date();
+      item.dateFinished = now;
+      item.isDoing = false;
     } else {
       item.isDoing = true;
+      item.isFinished = false;
     }
-
     updateTask(item);
   }
   return (
@@ -79,12 +80,7 @@ function TaskListItem({ item }) {
       </div>
       {!item.isFinished && (
         <div className="task-status-btn">
-          <button
-            type="button"
-            onClick={() => {
-              updateTaskStatus(item);
-            }}
-          >
+          <button type="button" onClick={() => {updateTaskStatus(item)}}>
             {item.isDoing ? finish : start}
           </button>
         </div>

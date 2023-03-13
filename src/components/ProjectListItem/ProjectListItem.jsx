@@ -4,12 +4,11 @@ import { useContext } from 'react';
 import '../ProjectListItem/projectListItem.css';
 
 function ProjectListItem({ item }) {
-  const { deleteProject, setProjectModalData, tasksList } = useContext(
-    applicationContext
-  );
-let done = 'taskDone';
-let doing = 'taskDoing';
-let toDo = 'taskToDo';
+  const { deleteProject, setProjectModalData, tasksList } =
+    useContext(applicationContext);
+  let done = 'taskDone';
+  let doing = 'taskDoing';
+  let toDo = 'taskToDo';
 
   function getProjectTasks() {
     return tasksList.filter((e) => item.id === e.project);
@@ -17,14 +16,16 @@ let toDo = 'taskToDo';
   function getProjectStatus() {
     let total = getProjectTasks().length;
     let finished = getProjectTasks().filter((e) => e.isFinished).length;
-    return `${finished}/${total}`
-
+    return `${finished}/${total}`;
   }
   return (
     <>
       <div className="project-title">
         <h2>{item.title}</h2>
-        <p><b>Tasks finished: </b>{getProjectStatus()}</p>
+        <p>
+          <b>Tasks finished: </b>
+          {getProjectStatus()}
+        </p>
       </div>
       <div className="project-descr">
         <p>{item.description}</p>

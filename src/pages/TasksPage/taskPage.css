@@ -1,8 +1,8 @@
 @import '../../app.css';
 
 .task-page {
-    background-color: #fff;
-    width: 100vw;
+  background-color: #fff;
+  width: 100vw;
 }
 
 .tasks-header {
@@ -17,8 +17,8 @@
 
 .all-tasks {
   display: flex;
-  justify-content:flex-start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
   margin: 20px 60px;
 }
@@ -28,8 +28,8 @@
   right: 0;
   z-index: 1;
   transition: all 0.3s ease-in-out;
-  }
-.input-hidden-task{
+}
+.input-hidden-task {
   right: -282px;
 }
 .task {

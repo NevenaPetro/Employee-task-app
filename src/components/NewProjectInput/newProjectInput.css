@@ -2,16 +2,34 @@
 
 .create-new-input-proj {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  padding: 0 60px;
+  padding: 50px 30px;
   background-color: #00a0df;
-  height: 53px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 290px;
+  color: #eaeaea;
+  font-size: 14px;
 }
-.create-new-input-proj input {
+.label-input-proj label {
+  margin: 10px ;
+}
+.label-input-proj input {
   border: none;
   border-radius: 20px;
-  padding: 5px 10px;
+  padding: 10px;
+  margin: 5px 0 20px;
+  width: 220px;
+}
+.label-input-proj textarea {
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  min-height: 200px;
+  margin: 5px 0 20px;
+  width: 220px;
 }
 .btn-md {
   border: none;

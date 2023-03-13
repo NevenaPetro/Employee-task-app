@@ -53,7 +53,17 @@ function App() {
             salary: doc.data().salary,
           });
         });
-
+        employeesList.sort((a, b) => {
+          const nameA = a.name.toUpperCase(); 
+          const nameB = b.name.toUpperCase(); 
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
         setEmployeesList(employeesList);
       } catch (error) {}
     };
@@ -80,9 +90,17 @@ function App() {
             isDoing: doc.data().isDoing,
           });
         });
-        console.log("tasksList")
-        console.log(tasksList)
-
+        tasksList.sort((a, b) => {
+          const taskA = a.title.toUpperCase(); 
+          const taskB = b.title.toUpperCase(); 
+          if (taskA < taskB) {
+            return -1;
+          }
+          if (taskA > taskB) {
+            return 1;
+          }
+          return 0;
+        })
         setTasksList(tasksList);
       } catch (error) {}
     };
@@ -122,7 +140,19 @@ function App() {
   }
   function updateEmployee(item) {
     let differenceList = employeesList.filter((e) => e.id !== item.id);
-    setEmployeesList([...differenceList, item]);
+    let newList = [...differenceList, item];
+    newList.sort((a, b) => {
+      const nameA = a.name.toUpperCase(); 
+      const nameB = b.name.toUpperCase(); 
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    setEmployeesList(newList);
     updateDoc(doc(db, 'employees', item.id), {
       name: item.name,
       email: item.email,
@@ -146,7 +176,19 @@ function App() {
 
   function updateTask(item) {
     let differenceList = tasksList.filter((e) => e.id !== item.id);
-    setTasksList([...differenceList, item]);
+    let newList = [...differenceList, item];
+    newList.sort((a, b) => {
+      const taskA = a.title.toUpperCase(); 
+      const taskB = b.title.toUpperCase(); 
+      if (taskA < taskB) {
+        return -1;
+      }
+      if (taskA > taskB) {
+        return 1;
+      }
+      return 0;
+    })
+    setTasksList(newList);
     updateDoc(doc(db, 'tasks', item.id), {
       title: item.title,
       description: item.description,
@@ -176,7 +218,19 @@ function App() {
   }
   function updateProject(item) {
     let differenceList = projectsList.filter((e) => e.id !== item.id);
-    setProjectsList([...differenceList, item]);
+    let newList = [...differenceList, item];
+    newList.sort((a, b) => {
+      const projectA = a.title.toUpperCase(); 
+      const projectB = b.title.toUpperCase(); 
+      if (projectA < projectB) {
+        return -1;
+      }
+      if (projectA > projectB) {
+        return 1;
+      }
+      return 0;
+    })
+    setProjectsList(newList);
     updateDoc(doc(db, 'projects', item.id), {
       title: item.title,
       description: item.description,

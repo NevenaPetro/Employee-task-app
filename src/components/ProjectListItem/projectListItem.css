@@ -27,7 +27,7 @@
 }
 .taskToDo {
   padding: 5px 15px;
-  background-color: #fcf5bf;
+  background-color: #fffbcf;
   color: #3d3935;
   min-height: 30px;
   margin: 5px;
@@ -35,7 +35,7 @@
 }
 .taskDoing {
   padding: 5px 15px;
-  background-color: #ffec6e;
+  background-color: #ffee80;
   color: #3d3935;
   min-height: 30px;
   margin: 5px;
@@ -43,7 +43,7 @@
 }
 .taskDone {
   padding: 5px 15px;
-  background-color: #ffde06;
+  background-color: #ffdd00;
   color: #3d3935;
   min-height: 30px;
   margin: 5px;

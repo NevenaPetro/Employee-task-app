@@ -64,6 +64,7 @@ function NewTaskInput() {
             name="title"
             placeholder="enter"
             onChange={handleTaskTitleInput}
+            required
           ></input>
         </div>
         <div className="label-input-task">
@@ -79,6 +80,7 @@ function NewTaskInput() {
             name="descr"
             placeholder="enter"
             onChange={handleTaskDescrInput}
+            required
           ></textarea>
         </div>
         <div className="label-input-task">

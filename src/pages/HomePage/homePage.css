@@ -1,6 +1,8 @@
 @import '../../app.css';
 
 .home-page {
-    background-color: #eaeaea;
-    min-height: 100vh;
+  background-color: #eaeaea;
+  min-height: 100vh;
+  
+  padding: 60px;
 }

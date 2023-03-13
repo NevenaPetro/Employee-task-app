@@ -1,5 +1,8 @@
 @import '../../app.css';
 
+.project-page {
+  min-height: 100vh;
+}
 .project-header {
   display: flex;
   justify-content: space-between;
@@ -25,18 +28,18 @@
 }
 .input-wrap-project {
   position: absolute;
-  top: 180px;
-  width: 100%;
-  z-index: 0;
+  top: 0;
+  right: 0;
+  z-index: 1;
   transition: all 0.3s ease-in-out;
 }
 .input-hidden-project {
-  top: 135px;
+  right: -282px;
 }
 .all-projects {
   display: flex;
   justify-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   flex-wrap: wrap;
   margin: 20px 60px;
 }

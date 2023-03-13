@@ -21,7 +21,7 @@ const DatePickerBirth = ({startDate, setStartDate}) => {
         },
       ]}
       onChange={(date = Date) => {setStartDate(date);
-      console.log (date)}}
+     }}
     />
   );
 };

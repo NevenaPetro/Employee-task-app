@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { applicationContext } from '../../context/AplicationContext';
 import NewTaskInput from '../../components/NewTaskInput/NewTaskInput';
 import TaskListItem from '../../components/TaskListItem/TaskListItem';
@@ -7,10 +7,8 @@ import '../TasksPage/taskPage.css';
 
 function TaskPage() {
   const inputHiddenTask = 'input-hidden-task';
-  const { tasksList, activeClassNameTask, setActiveClassNameTask } = useContext(
-    applicationContext
-  );
-  console.log(tasksList)
+  const { tasksList, activeClassNameTask, setActiveClassNameTask } =
+    useContext(applicationContext);
 
   return (
     <div className="task-page">

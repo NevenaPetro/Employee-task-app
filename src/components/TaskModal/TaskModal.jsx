@@ -25,10 +25,13 @@ function TaskModal({ item }) {
       description: newDescr,
       assignee: newAssignee,
       project: newProject,
+      dateFinished: item.dateFinished,
+      isFinished: item.isFinished,
       dueDate: newDueDate,
+      isDoing: item.isDoing,
     };
-    updateTask(updatedTask);
     setTaskModalData(null);
+    updateTask(updatedTask);
   }
 
   function handleTitleInputChange(e) {
