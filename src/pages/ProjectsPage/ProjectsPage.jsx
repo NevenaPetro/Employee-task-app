@@ -7,12 +7,9 @@ import '../ProjectsPage/projectsPage.css';
 
 function ProjectsPage() {
   const inputHiddenProject = 'input-hidden-project';
-  const { projectsList, activeClassNameProject, setActiveClassNameProject } = useContext(
-    applicationContext
-  );
+  const { projectsList, activeClassNameProject, setActiveClassNameProject } =
+    useContext(applicationContext);
 
- 
-  
   return (
     <div className="project-page">
       <div className="project-header">
@@ -27,7 +24,11 @@ function ProjectsPage() {
           Create new project
         </button>
       </div>
-      <div className={`input-wrap-project ${activeClassNameProject ? inputHiddenProject : ''}`}>
+      <div
+        className={`input-wrap-project ${
+          activeClassNameProject ? inputHiddenProject : ''
+        }`}
+      >
         <NewProjectInput />
       </div>
       <div className="all-projects">

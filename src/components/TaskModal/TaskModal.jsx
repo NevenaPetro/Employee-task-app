@@ -5,12 +5,8 @@ import DatePickerTask from '../DatePickerTask/DatePickerTask';
 import '../TaskModal/taskModal.css';
 
 function TaskModal({ item }) {
-  const {
-    setTaskModalData,
-    updateTask,
-    employeesList,
-    projectsList,
-  } = useContext(applicationContext);
+  const { setTaskModalData, updateTask, employeesList, projectsList } =
+    useContext(applicationContext);
   const [newTitle, setNewTitle] = useState(item.title);
   const [newDescr, setNewDescr] = useState(item.description);
   const [newAssignee, setNewAssignee] = useState(item.assignee);
@@ -31,6 +27,7 @@ function TaskModal({ item }) {
       isDoing: item.isDoing,
     };
     setTaskModalData(null);
+
     updateTask(updatedTask);
   }
 

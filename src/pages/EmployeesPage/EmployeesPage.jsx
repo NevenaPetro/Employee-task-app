@@ -7,9 +7,8 @@ import '../EmployeesPage/employeesPage.css';
 
 function EmployeesPage() {
   const inputHidden = 'input-hidden';
-  const { employeesList, activeClassName, setActiveClassName } = useContext(
-    applicationContext
-  );
+  const { employeesList, activeClassName, setActiveClassName } =
+    useContext(applicationContext);
   return (
     <div className="empl-page">
       <div className="employees-header">

@@ -4,17 +4,13 @@ import './newEmployeeInput.css';
 import DatePickerBirth from '../DatePickerBirth/DatePickerBirth';
 
 function NewEmployeeInput() {
-
   const [emplName, setEmplName] = useState('');
   const [emplEmail, setEmplEmail] = useState('');
   const [emplPhone, setEmplPhone] = useState('');
   const [emplBirth, setEmplBirth] = useState(new Date());
   const [emplSalary, setEmplSalary] = useState('');
 
-  const {
-    createNewEmployee
-  } = useContext(applicationContext);
-  
+  const { createNewEmployee } = useContext(applicationContext);
 
   function handleSubmitNewEmpl(event) {
     event.preventDefault();
@@ -23,10 +19,10 @@ function NewEmployeeInput() {
       email: emplEmail,
       phone: emplPhone,
       dateOfBirth: emplBirth,
-      salary: emplSalary
+      salary: emplSalary,
     };
 
-    createNewEmployee(newEmployee)
+    createNewEmployee(newEmployee);
   }
 
   function handleEmplNameInput(e) {

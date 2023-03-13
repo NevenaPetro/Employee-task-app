@@ -9,8 +9,6 @@ function NewTaskInput() {
   const [taskAssignee, setTaskAssignee] = useState('');
   const [taskProject, setTaskProject] = useState('');
   const [taskDueDate, setTaskDueDate] = useState(new Date());
-  
-  
 
   const {
     createNewTask,
@@ -41,6 +39,8 @@ function NewTaskInput() {
       assignee: taskAssignee,
       project: taskProject,
       dueDate: taskDueDate,
+      isFinished: false,
+      isDoing: false,
     };
     createNewTask(newTask);
     setActiveClassNameTask(!activeClassNameTask);

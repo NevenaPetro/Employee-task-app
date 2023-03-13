@@ -1,10 +1,10 @@
-import React from "react";
-import DatePicker from "react-datepicker";
+import React from 'react';
+import DatePicker from 'react-datepicker';
 
-import "react-datepicker/dist/react-datepicker.css";
-import '../DatePickerBirth/datePickerBirth.css'
+import 'react-datepicker/dist/react-datepicker.css';
+import '../DatePickerBirth/datePickerBirth.css';
 
-const DatePickerBirth = ({startDate, setStartDate}) => {
+const DatePickerBirth = ({ startDate, setStartDate }) => {
   const now = new Date();
 
   return (
@@ -20,8 +20,9 @@ const DatePickerBirth = ({startDate, setStartDate}) => {
           end: now,
         },
       ]}
-      onChange={(date = Date) => {setStartDate(date);
-     }}
+      onChange={(date = Date) => {
+        setStartDate(date);
+      }}
     />
   );
 };

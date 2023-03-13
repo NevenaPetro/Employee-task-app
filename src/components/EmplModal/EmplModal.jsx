@@ -84,12 +84,12 @@ function EmplModal({ item }) {
               onChange={handlePhoneInputChange}
               className="modal-input"
             ></input>
-            
-              <DatePickerBirth
-                startDate={newDateOfBirth}
-                setStartDate={setNewDateOfBirth}
-              />
-            
+
+            <DatePickerBirth
+              startDate={newDateOfBirth}
+              setStartDate={setNewDateOfBirth}
+            />
+
             <input
               type="text"
               placeholder={item.salary}

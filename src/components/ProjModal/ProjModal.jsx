@@ -4,9 +4,7 @@ import { applicationContext } from '../../context/AplicationContext';
 import '../ProjModal/projModal.css';
 
 function TaskModal({ item }) {
-  const { setProjectModalData, updateProject } = useContext(
-    applicationContext
-  );
+  const { setProjectModalData, updateProject } = useContext(applicationContext);
   const [newProjTitle, setNewProjTitle] = useState(item.title);
   const [newProjDescr, setNewProjDescr] = useState(item.description);
 
@@ -28,7 +26,6 @@ function TaskModal({ item }) {
   function handleProjectDescrInputChange(e) {
     setNewProjDescr(e.target.value);
   }
-  
 
   return (
     <>

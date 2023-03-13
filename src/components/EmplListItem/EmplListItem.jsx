@@ -4,11 +4,8 @@ import { useContext } from 'react';
 import Moment from 'react-moment';
 import '../EmplListItem/emplListItem.css';
 
-
 function EmplListItem({ item }) {
-
   const { deleteEmployee, setEmplModalData } = useContext(applicationContext);
-
 
   return (
     <>
@@ -25,17 +22,21 @@ function EmplListItem({ item }) {
         <p>{item.phone}</p>
       </td>
       <td>
-        <p><Moment format="DD/MM/YYYY">{item.dateOfBirth}</Moment></p>
+        <p>
+          <Moment format="DD/MM/YYYY">{item.dateOfBirth}</Moment>
+        </p>
       </td>
       <td>
         <p>{item.salary}</p>
       </td>
       <td>
-        <button type="button" 
-        onClick={() => {
-          setEmplModalData(item);
+        <button
+          type="button"
+          onClick={() => {
+            setEmplModalData(item);
           }}
-          className="btn-md">
+          className="btn-md"
+        >
           update
         </button>
       </td>

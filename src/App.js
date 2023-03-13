@@ -54,8 +54,8 @@ function App() {
           });
         });
         employeesList.sort((a, b) => {
-          const nameA = a.name.toUpperCase(); 
-          const nameB = b.name.toUpperCase(); 
+          const nameA = a.name.toUpperCase();
+          const nameB = b.name.toUpperCase();
           if (nameA < nameB) {
             return -1;
           }
@@ -85,14 +85,16 @@ function App() {
             assignee: doc.data().assignee,
             project: doc.data().project,
             dueDate: doc.data().dueDate.toDate(),
-            dateFinished: doc.data().dateFinished ? doc.data().dateFinished.toDate() : null,
+            dateFinished: doc.data().dateFinished
+              ? doc.data().dateFinished.toDate()
+              : null,
             isFinished: doc.data().isFinished,
             isDoing: doc.data().isDoing,
           });
         });
         tasksList.sort((a, b) => {
-          const taskA = a.title.toUpperCase(); 
-          const taskB = b.title.toUpperCase(); 
+          const taskA = a.title.toUpperCase();
+          const taskB = b.title.toUpperCase();
           if (taskA < taskB) {
             return -1;
           }
@@ -100,7 +102,7 @@ function App() {
             return 1;
           }
           return 0;
-        })
+        });
         setTasksList(tasksList);
       } catch (error) {}
     };
@@ -121,6 +123,18 @@ function App() {
             description: doc.data().description,
           });
         });
+        projectsList.sort((a, b) => {
+          const projectA = a.title.toUpperCase();
+          const projectB = b.title.toUpperCase();
+          if (projectA < projectB) {
+            return -1;
+          }
+          if (projectA > projectB) {
+            return 1;
+          }
+          return 0;
+        });
+
         setProjectsList(projectsList);
       } catch (error) {}
     };
@@ -142,8 +156,8 @@ function App() {
     let differenceList = employeesList.filter((e) => e.id !== item.id);
     let newList = [...differenceList, item];
     newList.sort((a, b) => {
-      const nameA = a.name.toUpperCase(); 
-      const nameB = b.name.toUpperCase(); 
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
       if (nameA < nameB) {
         return -1;
       }
@@ -163,6 +177,7 @@ function App() {
   }
 
   async function createNewTask(newTask) {
+    console.log(newTask);
     setActiveClassName(!activeClassName);
     const docRef = await addDoc(collection(db, 'tasks'), newTask);
     newTask.id = docRef.id;
@@ -178,8 +193,8 @@ function App() {
     let differenceList = tasksList.filter((e) => e.id !== item.id);
     let newList = [...differenceList, item];
     newList.sort((a, b) => {
-      const taskA = a.title.toUpperCase(); 
-      const taskB = b.title.toUpperCase(); 
+      const taskA = a.title.toUpperCase();
+      const taskB = b.title.toUpperCase();
       if (taskA < taskB) {
         return -1;
       }
@@ -187,7 +202,7 @@ function App() {
         return 1;
       }
       return 0;
-    })
+    });
     setTasksList(newList);
     updateDoc(doc(db, 'tasks', item.id), {
       title: item.title,
@@ -220,8 +235,8 @@ function App() {
     let differenceList = projectsList.filter((e) => e.id !== item.id);
     let newList = [...differenceList, item];
     newList.sort((a, b) => {
-      const projectA = a.title.toUpperCase(); 
-      const projectB = b.title.toUpperCase(); 
+      const projectA = a.title.toUpperCase();
+      const projectB = b.title.toUpperCase();
       if (projectA < projectB) {
         return -1;
       }
@@ -229,7 +244,7 @@ function App() {
         return 1;
       }
       return 0;
-    })
+    });
     setProjectsList(newList);
     updateDoc(doc(db, 'projects', item.id), {
       title: item.title,
@@ -268,7 +283,7 @@ function App() {
         updateProject,
         projectsList,
         setProjectModalData,
-        getProjectTitleById
+        getProjectTitleById,
       }}
     >
       <Header />

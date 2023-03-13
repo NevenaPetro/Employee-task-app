@@ -2,7 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import '../DatePickerTask/datePickerTask.css'
+
 
 const DatePickerTask = ({startDate, setStartDate}) => {
   const now = new Date();

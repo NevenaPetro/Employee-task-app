@@ -80,7 +80,12 @@ function TaskListItem({ item }) {
       </div>
       {!item.isFinished && (
         <div className="task-status-btn">
-          <button type="button" onClick={() => {updateTaskStatus(item)}}>
+          <button
+            type="button"
+            onClick={() => {
+              updateTaskStatus(item);
+            }}
+          >
             {item.isDoing ? finish : start}
           </button>
         </div>

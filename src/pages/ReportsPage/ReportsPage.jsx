@@ -58,8 +58,10 @@ function ReportsPage() {
                 <td>
                   <p>{getAssigneeNameById(e.id)}</p>
                 </td>
-                <td className='center'>
-                  <p><b>{e.score}</b></p>
+                <td className="center">
+                  <p>
+                    <b>{e.score}</b>
+                  </p>
                 </td>
               </tr>
             ))}
@@ -90,8 +92,10 @@ function ReportsPage() {
                 <td>
                   <p>{getAssigneeNameById(e.assignee)}</p>
                 </td>
-                <td className='center'>
-                  <p><b>{e.remaingDays}</b></p>
+                <td className="center">
+                  <p>
+                    <b>{e.remaingDays}</b>
+                  </p>
                 </td>
                 <td>
                   <p>
